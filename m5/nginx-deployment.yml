@@ -20,6 +20,16 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 82
+      volumeMounts:
+        - name: app-secret-volume
+          mountPath: /etc/secrets
+          readOnly: true
+
+      # 👇 Define volume
+      volumes:
+      - name: app-secret-volume
+        secret:
+          secretName: nginxsecrets
 
 
 
